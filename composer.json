@@ -1,0 +1,17 @@
+{
+    "name": "david/phpthinkering",
+    "description": "exercici php",
+    "require-dev": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "David\\Phpthinkering\\": "Core/"
+        }
+    },
+    "files": [
+        "Core/helpers.php"
+    ],
+    "require": {}
+}

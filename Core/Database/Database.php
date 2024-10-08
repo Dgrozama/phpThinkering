@@ -1,6 +1,6 @@
 <?php
 
-namespace Code\Database;
+namespace Core\Database;
 
 class Database {
     protected $pdo;

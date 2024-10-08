@@ -1,7 +1,7 @@
 <?php
 
 //Fitxer per crear el contenidor de les dependències
-namespace Code;
+namespace Core;
 use Exception;
 class App
 {

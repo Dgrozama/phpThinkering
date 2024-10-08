@@ -1,6 +1,6 @@
 <?php
 //Fitxer per crear la connexió a la base de dades
-namespace Code\Database;
+namespace Core\Database;
 
 use PDO; //importem classe PD0 per interactuar en les bases de dades
 

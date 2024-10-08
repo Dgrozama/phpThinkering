@@ -1,6 +1,6 @@
 <?php
 
-namespace Code;
+namespace Core;
 
 use http\Exception\RuntimeException;
 
