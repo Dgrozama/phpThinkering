@@ -2,117 +2,59 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Demo PHP</title>
-</head>
-<body>
-<h1>
-    <?php
-    $greeting = "Hola";
-    echo $greeting . "World!<br>";
-    $a =3;
-    $b = 2;
-    echo $a + $b . "<br>";
-    //                $films= [
-    //                        "Dune",
-    //                    "Star wars",
-    //                    "Blade Runner 2049",
-    //                    "Mad Max: Fury road",
-    //                    "Avatar",
-    //                    "Club de los poetas muertos"
-    //                ];
-    $films = [
-        [
-            "name" => "Dune",
-            "director" => "Denis Villeneuve",
-            "year" => "2020",
-        ], [
-            "name" => "Star Wars",
-            "director" => "George Lucas",
-            "year" => "1977",
-        ], [
-            "name" => "Blade Runner 2049",
-            "director" => "Denis Villeneuve",
-            "year" => "2017",
-        ], [
-            "name" => "Mad Max: Fury road",
-            "director" => "George Miller",
-            "year" => "2015",
-        ], [
-            "name" => "Avatar",
-            "director" => "James Cameron",
-            "year" => "2009",
-        ], [
-            "name" => "2001: a space odyssey",
-            "director" => "Stanley Kubrick",
-            "year" => "1968",
-        ]];
-    var_dump($films);
-
-    function filterByDirector($films, $director){
-        $filteredDirectors = [];
-        foreach($films as $film){
-            if ($film['director'] == $director) {
-                $filteredDirectors[] = $film;
-            }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projecte</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .main-theme {
+            height: 100vh;
+            background-image: url('cinema-background.png');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
-        return $filteredDirectors;
-    }
-    ?>
-</h1>
-<ul>
-    <h2>TOTES LES PELICULES:</h2>
-    <?php foreach ($films as $film) : ?>
-    <li><?= $film['name'] ?></li>
-    <?php endforeach; ?>
-
-    <h2>PELICULES FILTRADES PER FUNCIO:</h2>
-    <?php foreach (filterByDirector($films, "Denis Villeneuve") as $film) : ?>
-    <li><?= $film['name']?>(<?= $film['year']?> by <?= $film['director']?>)</li>
-    <?php endforeach; ?>
-</ul>
-<p>Agafem la peli 3: <?= $films[2] ?></p>
-
-<p>Llista de pelis:</p>
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th scope="col">
-                Id
-            </th>
-            <th scope="col">
-                Film Name
-            </th>
-            <th scope="col">
-                Director
-            </th>
-            <th scope="col">
-                releaseYear
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($films as $film): ?>
-        <tr>
-            <td>
-                    <?=$film->pk;?>
-            </td>
-            <td>
-                    <?=$film->name;?>
-            </td>
-            <td>
-                    <?=$film->director;?>
-            </td>
-            <td>
-                    <?=$film->year;?>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
+        .main-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="main-theme">
+<nav class="w-full bg-black bg-opacity-70 p-4 fixed top-0 left-0">
+    <ul class="flex justify-center space-x-4">
+        <li>
+            <a href="/" class="text-blue-500 hover:underline">Inici</a>
+        </li>
+        <li>
+            <a href="/films" class="text-blue-500 hover:underline">Pel·lícules</a>
+        </li>
+        <li>
+            <a href="/series" class="text-blue-500 hover:underline">Sèries</a>
+        </li>
+    </ul>
+</nav>
+<div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6 main-card mt-16">
+    <h1 class="text-4xl font-bold mb-4 text-center text-blue-600">Benvingut al Projecte 🎬</h1>
+    <div class="mt-8 text-center">
+        <h2 class="text-2xl font-bold mb-4">Portada/Presentació del Projecte</h2>
+        <p class="mb-4">Aquesta és la pàgina principal del projecte on es presenta la informació general.</p>
+        <img src="portada.png" alt="Project Image" class="mx-auto mb-4 rounded-lg shadow-lg">
+        <p class="text-white-700">Explora les nostres col·leccions de pel·lícules i sèries. Fes clic als enllaços de dalt per començar!</p>
+    </div>
 </div>
 </body>
 </html>
-
-
-
