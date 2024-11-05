@@ -2,23 +2,22 @@
 
 namespace Core\Database;
 
-use PDO;
+class Database {
+    protected $pdo;
 
-class Database
-{
-    protected $connection; //guardem instancia de la classe pdo
-
-    //creem constructor reb una instancia pdo per a realitzar les consultes
-    public function __construct(PDO $connection)
+    //Creem constructor
+    public function __construct($pdo)
     {
-        $this->connection = $connection;
+        $this->pdo = $pdo;
     }
+    //creem funcio per agafar els registres d'una taula de la base de dades
 
-    //funcio per a la connexió
-    public function getConnection()
+    public function selectAll($table)
     {
-        return $this->connection;
+        $statement = $this->pdo->prepare("SELECT * FROM $table");
+
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS);
     }
-
-
 }
