@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Series</title>
+    <title>Create Film</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .cinema-theme {
@@ -47,8 +47,8 @@
     </ul>
 </nav>
 <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6 cinema-card mt-16">
-    <h1 class="text-4xl font-bold mb-4 text-center text-blue-600">Create Series 📺</h1>
-    <form action="/series/store" method="POST">
+    <h1 class="text-4xl font-bold mb-4 text-center">Create Film 🎥</h1>
+    <form action="/store" method="POST">
         <div class="mb-4">
             <label for="name" class="block text-white">Name</label>
             <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded text-black" required>
@@ -66,11 +66,10 @@
             <input type="text" id="genre" name="genre" class="w-full px-4 py-2 rounded text-black" required>
         </div>
         <div class="mb-4">
-            <label for="synopsis" class="block text-white">Synopsis</label>
-            <textarea id="synopsis" name="synopsis" class="w-full px-4 py-2 rounded text-black" required></textarea>
+            <label for="sinopsis" class="block text-white">Sinopsis</label>
+            <textarea id="sinopsis" name="sinopsis" class="w-full px-4 py-2 rounded text-black" required></textarea>
         </div>
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Create</button>
-        <a href="/series" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-300 ease-in-out transform hover:scale-105 ml-4">Back</a>
     </form>
 </div>
 </body>

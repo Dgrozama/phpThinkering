@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Series 📺</title>
+    <title>Films 🎬</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .cinema-theme {
             height: 100vh;
-            background-image: url('{{('cinema-background.png') }}');
+            background-image: url('cinema-background.png');
             background-size: cover;
             background-position: center;
             color: #fff;
@@ -25,6 +25,28 @@
             margin: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             animation: fadeIn 2s ease-in-out;
+        }
+        .cinema-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .cinema-description {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        .cinema-table th, .cinema-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .cinema-table th {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+        }
+        .cinema-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .cinema-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -47,8 +69,9 @@
     </ul>
 </nav>
 <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6 cinema-card mt-16">
-    <h1 class="text-4xl font-bold mb-4 text-center">Series 📺</h1>
-    <a href="/series/create" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Add New Series ➕</a>    <table class="min-w-full mt-4 bg-white border border-gray-300 cinema-table">
+    <h1 class="text-4xl font-bold mb-4 text-center">Films 🎥</h1>
+    <a href="/create" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Add New Film ➕</a>
+    <table class="min-w-full mt-4 bg-white border border-gray-300 cinema-table">
         <thead>
         <tr class="text-gray-600 uppercase text-sm leading-normal">
             <th class="py-3 px-6 text-left">ID</th>
@@ -56,28 +79,28 @@
             <th class="py-3 px-6 text-left">Director</th>
             <th class="py-3 px-6 text-left">Year</th>
             <th class="py-3 px-6 text-left">Genre</th>
-            <th class="py-3 px-6 text-left">Synopsis</th>
+            <th class="py-3 px-6 text-left">Sinopsis</th>
             <th class="py-3 px-6 text-center">Actions</th>
         </tr>
         </thead>
         <tbody class="text-gray-600 text-sm font-light">
-        <?php if (empty($series)): ?>
+        <?php if (empty($films)): ?>
         <tr>
-            <td colspan="6" class="py-3 px-6 text-center">No hi ha sèries disponibles. 😢</td>
+            <td colspan="6" class="py-3 px-6 text-center">No hi ha pelis disponibles. 😢</td>
         </tr>
         <?php else: ?>
-            <?php foreach ($series as $serie): ?>
+            <?php foreach ($films as $film): ?>
         <tr class="border-b border-gray-200 hover:bg-gray-100">
-            <td class="py-3 px-6"><?=$serie['id'] ?></td>
-            <td class="py-3 px-6"><?= htmlspecialchars($serie['name']) ?></td>
-            <td class="py-3 px-6"><?= htmlspecialchars($serie['director']) ?></td>
-            <td class="py-3 px-6"><?= htmlspecialchars($serie['year']) ?></td>
-            <td class="py-3 px-6"><?= htmlspecialchars($serie['genre']) ?></td>
-            <td class="py-3 px-6"><?= htmlspecialchars($serie['synopsis']) ?></td>
+            <td class="py-3 px-6"><?=$film['id'] ?></td>
+            <td class="py-3 px-6"><?= htmlspecialchars($film['name']) ?></td>
+            <td class="py-3 px-6"><?= htmlspecialchars($film['director']) ?></td>
+            <td class="py-3 px-6"><?= htmlspecialchars($film['year']) ?></td>
+            <td class="py-3 px-6"><?= htmlspecialchars($film['genre']) ?></td>
+            <td class="py-3 px-6"><?= htmlspecialchars($film['sinopsis']) ?></td>
             <td class="py-3 px-6 text-center">
-                <a href="/series/edit/<?= $serie['id'] ?>" class="text-blue-500 hover:text-blue-700 mr-4">Edit ✏️</a>
-                <a href="/series/delete/<?= $serie['id'] ?>" class="text-red-500 hover:text-red-700">Delete 🗑️</a>
-                <a href="/series/show/<?= $serie['id'] ?>" class="text-green-500 hover:text-green-700 ml-4">Show 🎬</a>
+                <a href="/edit/<?= $film['id'] ?>" class="text-blue-500 hover:text-blue-700 mr-4">Edit ✏️</a>
+                <a href="/delete/<?= $film['id'] ?>" class="text-red-500 hover:text-red-700 ">Delete 🗑️</a>
+                <a href="/show/<?= $film['id'] ?>" class="text-green-500 hover:text-green-700 ml-4">Show 🎬</a>
             </td>
         </tr>
         <?php endforeach; ?>

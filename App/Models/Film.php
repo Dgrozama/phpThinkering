@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Core\App;
 
-class Serie
+class Film
 {
-    protected static $table = 'series';
+    protected static $table = 'films';
 
-    // Function to get all series
+    //funcio per a que torne totes les pelis
     public static function getAll()
     {
         $db = App::get('database');
@@ -17,48 +17,49 @@ class Serie
         return $statement->fetchAll();
     }
 
-    // Function to find a series by id
+    //funcio per a buscar una peli
     public static function find($id)
     {
         $db = App::get('database')->getConnection();
         $statement = $db->prepare('SELECT * FROM ' . self::$table . ' WHERE id = :id');
-        $statement->execute(['id' => $id]);
+        $statement->execute(array('id' => $id));
         return $statement->fetch(\PDO::FETCH_OBJ);
     }
 
-    // Function to create a new series
+    //funcio create
     public static function create($data)
     {
         $db = App::get('database')->getConnection();
-        $statement = $db->prepare('INSERT INTO ' . static::$table . "(name, director, year, genre, synopsis) VALUES (:name, :director, :year, :genre, :synopsis)");
+        $statement = $db->prepare('INSERT INTO ' . static::$table . "(name, director, year, genre, sinopsis) VALUES (:name, :director, :year, :genre, :sinopsis)");
         $statement->bindValue(':name', $data['name']);
         $statement->bindValue(':director', $data['director']);
         $statement->bindValue(':year', $data['year']);
         $statement->bindValue(':genre', $data['genre']);
-        $statement->bindValue(':synopsis', $data['synopsis']);
+        $statement->bindValue(':sinopsis', $data['sinopsis']);
         $statement->execute();
     }
 
-    // Function to update a series
+    //funcio update
     public static function update($id, $data)
     {
         $db = App::get('database')->getConnection();
-        $statement = $db->prepare("UPDATE " . static::$table . " SET name = :name, director = :director, year = :year, genre = :genre, synopsis = :synopsis WHERE id = :id");
+        $statement = $db->prepare("UPDATE ". static::$table . " SET name = :name, director = :director, year = :year, genre = :genre, sinopsis = :sinopsis WHERE id = :id");
         $statement->bindValue(':id', $id);
         $statement->bindValue(':name', $data['name']);
         $statement->bindValue(':director', $data['director']);
         $statement->bindValue(':year', $data['year']);
         $statement->bindValue(':genre', $data['genre']);
-        $statement->bindValue(':synopsis', $data['synopsis']);
+        $statement->bindValue(':sinopsis', $data['sinopsis']);
         $statement->execute();
     }
 
-    // Function to delete a series
+    //funcio delete
     public static function delete($id)
     {
         $db = App::get('database')->getConnection();
-        $statement = $db->prepare('DELETE FROM ' . static::$table . ' WHERE id = :id');
+        $statement = $db->prepare('DELETE FROM '. static::$table . ' WHERE id = :id');
         $statement->bindValue(':id', $id);
         $statement->execute();
     }
+
 }

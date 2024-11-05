@@ -1,27 +1,27 @@
 <?php
-
-//Fitxer per crear el contenidor de les dependències
+//Fitxer per crear el contenidor de dependencies per gestionar i accedir a les dependencies de l'aplicació de forma centralitzada
 namespace Core;
+
 use Exception;
+
 class App
 {
-//Array per al contenidor dependències
+    //array per al contenidor de dependencies
+    private static $container;
 
-private static $container;
-
-//Funcio enllaçar la dependència al contenidor
-
-public static function bind($key, $value)
+    //creem funcio enllaçar la dependencia al contenidor
+    public static function bind($key, $value)
     {
         static::$container[$key] = $value;
     }
 
-//Creem funcio per recuperar la dependencia
-public static function get($key)
+    //creem funcio per recuperar la dependencia
+    public static function get($key)
     {
-       if (array_key_exists($key, static::$container)) {
-           throw new Exception("No key '{$key}' in container}" );
-       }
-       return static::$container[$key];
+        if (!array_key_exists($key, static::$container)) {
+            throw new Exception("No key '{$key}' is bound in container.");
+        }
+        return static::$container[$key];
     }
+
 }
